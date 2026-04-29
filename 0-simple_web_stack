@@ -1,0 +1,29 @@
+A user opens a browser and types www.foobar.com.
+
+1. The browser sends a DNS query to resolve www.foobar.com.
+2. The DNS system returns the IP address 8.8.8.8.
+3. The browser sends an HTTP request to 8.8.8.8.
+4. The server receives the request and processes it using the web stack.
+
+Infrastructure:
+- Domain name: foobar.com
+  - www is a DNS A record pointing to 8.8.8.8
+- Server (IP: 8.8.8.8)
+  - Web server: Nginx
+  - Application server: handles backend logic
+  - Application files: source code and templates
+  - Database: MySQL
+
+Roles:
+- Server: a machine that hosts services and responds to requests
+- Domain name: maps human-readable names to IP addresses
+- DNS A record: links www.foobar.com to the server IP
+- Web server: handles HTTP requests and serves content
+- Application server: runs backend logic and connects to the database
+- Database: stores and retrieves structured data
+- Communication: uses HTTP/HTTPS between server and user
+
+Limitations:
+- SPOF: if the server fails, the entire site goes down
+- Downtime: restarting services causes temporary unavailability
+- Scalability: one server cannot handle high traffic or load spikes
