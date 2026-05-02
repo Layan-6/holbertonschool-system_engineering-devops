@@ -1,0 +1,27 @@
+Link to diagram: https://imgur.com/your-uploaded-image
+
+Infrastructure Overview:
+- 1 Load Balancer (HAProxy)
+- 2 Servers (Server A and Server B)
+  - Nginx (Web Server)
+  - Application Server
+  - Application Files (Codebase)
+  - MySQL Database
+
+Load Balancer:
+- Algorithm: Round Robin
+- Setup: Active-Active
+- Explanation:
+  - Round Robin distributes requests evenly.
+  - Active-Active means both servers handle traffic simultaneously.
+
+Database Setup:
+- Primary-Replica (Master-Slave)
+- Primary handles writes; Replica handles reads.
+- Replication improves scalability and fault tolerance.
+
+Issues:
+- SPOF: Load Balancer is a single point of failure.
+- Security: No firewall, no HTTPS.
+- Monitoring: No tools like Prometheus or Grafana.
+
