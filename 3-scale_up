@@ -1,0 +1,19 @@
+Link to diagram: https://imgur.com/your-uploaded-image
+
+Infrastructure:
+- 2 HAProxy Load Balancers (clustered)
+- 1 Web Server (Nginx)
+- 1 Application Server
+- 1 Database Server (MySQL)
+- 1 additional server added to split components
+
+Purpose of Elements:
+- Second Load Balancer: Prevents SPOF, enables high availability
+- Web Server: Serves static content, proxies dynamic requests
+- Application Server: Processes backend logic
+- Database Server: Stores persistent data
+- New Server: Enables separation of roles and better scalability
+
+Application Server vs Web Server:
+- Web Server handles static files and proxies requests
+- Application Server executes dynamic logic and interacts with database
