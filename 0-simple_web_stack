@@ -1,29 +1,70 @@
-A user opens a browser and types www.foobar.com.
+Link to diagram: https://imgur.com/your-uploaded-image
 
-1. The browser sends a DNS query to resolve www.foobar.com.
-2. The DNS system returns the IP address 8.8.8.8.
-3. The browser sends an HTTP request to 8.8.8.8.
-4. The server receives the request and processes it using the web stack.
+Infrastructure Overview:
 
-Infrastructure:
-- Domain name: foobar.com
-  - www is a DNS A record pointing to 8.8.8.8
-- Server (IP: 8.8.8.8)
-  - Web server: Nginx
-  - Application server: handles backend logic
-  - Application files: source code and templates
-  - Database: MySQL
+- 1 Domain Name: foobar.com
+- DNS Record: www -> 8.8.8.8
+- 1 Server:
+  - Nginx (Web Server)
+  - Application Server
+  - Application Files (Codebase)
+  - MySQL Database
 
-Roles:
-- Server: a machine that hosts services and responds to requests
-- Domain name: maps human-readable names to IP addresses
-- DNS A record: links www.foobar.com to the server IP
-- Web server: handles HTTP requests and serves content
-- Application server: runs backend logic and connects to the database
-- Database: stores and retrieves structured data
-- Communication: uses HTTP/HTTPS between server and user
+Request Flow:
 
-Limitations:
-- SPOF: if the server fails, the entire site goes down
-- Downtime: restarting services causes temporary unavailability
-- Scalability: one server cannot handle high traffic or load spikes
+- User enters www.foobar.com in the browser.
+- DNS resolves www.foobar.com to 8.8.8.8 using an A record.
+- Request is sent to the server.
+- Nginx receives the HTTP/HTTPS request.
+- Static files are served directly by Nginx.
+- Dynamic requests are forwarded to the Application Server.
+- The Application Server processes the request.
+- If needed, it queries MySQL Database.
+- MySQL returns data to the Application Server.
+- Response is sent back through Nginx to the user.
+
+Components:
+
+Server:
+- A server is a machine that provides services over a network.
+
+Domain Name:
+- Provides a human-readable address instead of an IP.
+- Example: www.foobar.com
+
+DNS Record:
+- Type: A Record
+- Maps domain name to IPv4 address.
+
+Web Server:
+- Software: Nginx
+- Handles HTTP/HTTPS requests.
+- Serves static content.
+- Forwards dynamic requests.
+
+Application Server:
+- Runs application logic.
+- Processes business rules.
+- Connects with database.
+
+Database:
+- Software: MySQL
+- Stores persistent data.
+- Retrieves and updates information.
+
+Communication:
+- Protocols: HTTP / HTTPS
+- Ports: 80 / 443
+
+Issues:
+
+- SPOF:
+  - Only one server exists.
+  - If it fails, the whole website is unavailable.
+
+- Downtime:
+  - Restarting services during updates causes downtime.
+
+- Scalability:
+  - A single server has limited resources.
+  - Cannot handle large traffic efficiently.
